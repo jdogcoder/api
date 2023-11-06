@@ -14,7 +14,9 @@ export async function checkEmail(email: string) {
 
 	// check if domain exists in database
 
-	const dbdata = await query('SELECT * FROM emails WHERE email = $1', [email]);
+	const dbdata = await query('SELECT * FROM scams.emails WHERE email = $1', [
+		email,
+	]);
 
 	if (dbdata.rows.length > 0) {
 		return {
@@ -35,7 +37,7 @@ export async function checkEmail(email: string) {
 
 	if (checkIpQualityScore.data.disposable === true) {
 		const dbinsert1 = await query(
-			"INSERT INTO emails (id, email, type, reason, reported_by_id) VALUES ($1, $2, $3, $4, $5)",
+			"INSERT INTO scams.emails (id, email, type, reason, reported_by_id) VALUES ($1, $2, $3, $4, $5)",
 			[
 				uuidv4(),
 				email,
@@ -59,7 +61,7 @@ export async function checkEmail(email: string) {
 
 	if (checkIpQualityScore.data.honeypot === true) {
 		const dbinsert2 = await query(
-			"INSERT INTO emails (id, email, type, reason, reported_by_id) VALUES ($1, $2, $3, $4, $5)",
+			"INSERT INTO scams.emails (id, email, type, reason, reported_by_id) VALUES ($1, $2, $3, $4, $5)",
 			[uuidv4(), email, 'honeypot', 'Flagged as honeypot by IPQualityScore', 1],
 		);
 

@@ -21,7 +21,7 @@ export async function checkLink(link: string): Promise<any> {
 	}
 
 	// check if domain exists in database
-	const dbdata = await query('SELECT * FROM links WHERE link = $1', [
+	const dbdata = await query('SELECT * FROM scams.links WHERE link = $1', [
 		flattenedLink,
 	]);
 
@@ -188,7 +188,7 @@ export async function checkLink(link: string): Promise<any> {
 	) {
 		// insert the link into the database
 		const dbinsert = await query(
-			"INSERT INTO links (id, link, flatLink, type, reason, reportedByID, dateReported) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+			"INSERT INTO scams.links (id, link, flatLink, type, reason, reportedByID, dateReported) VALUES ($1, $2, $3, $4, $5, $6, $7)",
 			[
 				uuidv4(),
 				link,

@@ -187,7 +187,7 @@ export async function checkDomain(domain: string) {
       2
 	) {
 		const dbinsert = await query(
-			"INSERT INTO domains (id, domain, dateReported, reason, type, reportedByID) VALUES ($1, $2, $3, $4, $5, $6)",
+			"INSERT INTO scams.domains (id, domain, dateReported, reason, type, reportedByID) VALUES ($1, $2, $3, $4, $5, $6)",
 			[
 				uuidv4(),
 				domain,

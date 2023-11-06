@@ -8,7 +8,7 @@ export async function checkPhoneNumber(phoneNumber: string) {
 	// check if domain exists in database (postgres)
 
 	const dbdata = await query(
-		"SELECT * FROM phone_numbers WHERE phone_number = $1",
+		"SELECT * FROM scams.phone_numbers WHERE phone_number = $1",
 		[phoneNumber],
 	);
 
