@@ -1,0 +1,14 @@
+.env
+node_modules
+dist
+.husky
+.eslintrc
+.eslintignore
+.prettierrc
+.prettierignore
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+.gitignore
+sample.env
+resources/
